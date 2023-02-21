@@ -7,14 +7,17 @@ import {useState} from 'react';
 function App() {
 
 const [input, setInput] = useState("");
-const [messages] = useState([{user:"me",message:"Hello world"}, {user:"AI",message:"Hi, I am Chat ghghgh"}]);
+const [messages, setMessages] = useState([]);
 // const [chatLog, setChatLog] = useState([]);
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-      try{
-      const response = await axios.post('http://localhost:3080', {prompt: input })
-      console.log(response)
+  let cache = [...messages,{user:"me", message: input}] 
+  setMessages(cache)   
+  try{
+      const response = await axios.post('http://localhost:5000', {prompt: input })
+      setInput("")
+      setMessages([...cache,{user:"AI", message: response.data.bot}])
       }catch(err){
         
       }
