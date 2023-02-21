@@ -15,7 +15,7 @@ const [messages, setMessages] = useState([]);
   let cache = [...messages,{user:"me", message: input}] 
   setMessages(cache)   
   try{
-      const response = await axios.post('https://wahala.onrender.com', {prompt: input })
+      const response = await axios.post('http://localhost:5000', {prompt: input })
       setInput("")
       setMessages([...cache,{user:"AI", message: response.data.bot}])
       }catch(err){
