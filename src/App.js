@@ -25,12 +25,12 @@ const [messages, setMessages] = useState([]);
   
   return (
     <div className="App">
-      <aside className="sidemenu">
+      {/* <aside className="sidemenu">
         <div className="sidetext">
           <span>+</span>
           Generate New
         </div>
-      </aside>
+      </aside> */}
       <section className="chatbox" rows="1">
       {messages.map((message)=><ChatMessage message={message} />)}
      
