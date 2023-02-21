@@ -53,18 +53,7 @@
   padding-left: 40px;
   padding-right: 40px;
 }
-.chat-input-text{
-  background-color: #404144;
-  width:60%;
-  border-radius: 5px;
-  border-color: none;
-  padding: 12px;
-  color: white;
-  font-size: 16px;
-  outline: none;
-  box-shadow: 0 0 8px 0 rgba((0,0,0,0.5), green, blue, alpha);
-  position: relative;
-}
+
 
 .chat-input-hold{
   padding: 10px;
@@ -82,5 +71,37 @@
 .chatbox {
   flex: 1;
   background-color: #343541;
+  position: relative;
 }
 
+.chat__form{
+  background-color: #404144;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  border-color: none;
+  padding: 12px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 8px 0 rgba((0,0,0,0.5), green, blue, alpha);
+
+}
+.chat__button{
+color: white;
+background-color: #343541;
+border: 0;
+border-radius: 5px;
+padding: 10px 20px;
+}
+.chat-input-text{
+  background-color: inherit;
+  outline: none;
+  border: 0;
+  color: white;
+  flex: 1;
+}

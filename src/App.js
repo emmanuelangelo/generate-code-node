@@ -1,3 +1,4 @@
+import axios from "axios"
 import './App.css';
 import './normal.css';
 import {useState} from 'react';
@@ -6,15 +7,19 @@ import {useState} from 'react';
 function App() {
 
 const [input, setInput] = useState("");
-const [message] = useState("");
+const [messages, setMessage] = useState([{user:"me",message:"Hello world"}, {user:"AI",message:"Hi, I am Chat ghghgh"}]);
 const [chatLog, setChatLog] = useState([]);
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
   e.preventDefault();
-  setChatLog([chatLog, {user: "me", message: `${input}`}])
-  setInput("");
-
+      try{
+      const response = await axios.post('http://localhost:3080', {prompt: input })
+      console.log(response)
+      }catch(err){
+        
+      }
   }
+  
   return (
     <div className="App">
       <aside className="sidemenu">
@@ -24,30 +29,15 @@ const [chatLog, setChatLog] = useState([]);
         </div>
       </aside>
       <section className="chatbox" rows="1">
-        <div className="chat-log">
-          <ChatMessage message={message}/>
-        </div>
-        <div className="chat-message">
-          <div className="chat-message-center">
-            <div className="avatar"></div>
-            <div className="message">Hello World</div>
-          </div>
-        </div>
-        <div className="chat-message chatgpt">
-          <div className="chat-message-center">
-            <div className="avatar"></div>
-            <div className="message">I am AI</div>
-          </div>
-        </div>
-        <div className="chat-input-hold">
-          <form OnSubmit={handleSubmit}>
-            <input rows="1" 
-            value={input}  
-            onChange={(e) => setInput (e.target.value)}
-            className="chat-input-text" placeholder="Input Syntax">
-            </input>
-          </form>
-        </div>
+      {messages.map((message)=><ChatMessage message={message} />)}
+     
+        <form className="chat__form" onSubmit={handleSubmit}>
+          <input rows="1" value={input}  
+          onChange={(e) => setInput (e.target.value)}
+          className="chat-input-text" placeholder="Input Syntax" />
+          <button type='submit' className='chat__button'>Generate</button>
+        </form>
+      
       </section>
     </div>
   );
@@ -56,11 +46,11 @@ const ChatMessage = ({message}) => {
   return (
     <div className="chat-message">
       <div className="chat-message-center">
-        <div className={`avatar ${message.user = "gpt" && "chatgpt"}`}>
+        <div className={`avatar ${message?.user ? "gpt" : "chatgpt"}`}>
 
         </div>
         <div className="message">
-          {message.message}
+          {message?.message}
         </div>
       </div>
     </div>
