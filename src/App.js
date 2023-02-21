@@ -7,8 +7,8 @@ import {useState} from 'react';
 function App() {
 
 const [input, setInput] = useState("");
-const [messages, setMessage] = useState([{user:"me",message:"Hello world"}, {user:"AI",message:"Hi, I am Chat ghghgh"}]);
-const [chatLog, setChatLog] = useState([]);
+const [messages] = useState([{user:"me",message:"Hello world"}, {user:"AI",message:"Hi, I am Chat ghghgh"}]);
+// const [chatLog, setChatLog] = useState([]);
 
   const handleSubmit = async (e) => {
   e.preventDefault();
