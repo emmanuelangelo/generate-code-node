@@ -10,9 +10,13 @@ function App() {
           Generate New
         </div>
       </aside>
-      <section className="chatbox">
+      <section className="chatbox" rows="1">
+        <div className="chat-log"></div>
+        <div className="chat-message">
+          <div className="avatar"></div>
+        </div>
         <div className="chat-input-hold">
-          <textarea className="chat-input" placeholder="Input Syntax">
+          <textarea className="chat-input-text" placeholder="Input Syntax">
           </textarea>
         </div>
       </section>
