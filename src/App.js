@@ -6,6 +6,7 @@ import {useState} from 'react';
 function App() {
 
 const [input, setInput] = useState("");
+const [message] = useState("");
 const [chatLog, setChatLog] = useState([]);
 
   async function handleSubmit(e) {
@@ -24,7 +25,7 @@ const [chatLog, setChatLog] = useState([]);
       </aside>
       <section className="chatbox" rows="1">
         <div className="chat-log">
-
+          <ChatMessage message={message}/>
         </div>
         <div className="chat-message">
           <div className="chat-message-center">
@@ -51,5 +52,18 @@ const [chatLog, setChatLog] = useState([]);
     </div>
   );
 }
+const ChatMessage = ({message}) => {
+  return (
+    <div className="chat-message">
+      <div className="chat-message-center">
+        <div className={`avatar ${message.user = "gpt" && "chatgpt"}`}>
 
+        </div>
+        <div className="message">
+          {message.message}
+        </div>
+      </div>
+    </div>
+  )
+}
 export default App;
